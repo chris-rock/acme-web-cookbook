@@ -1,0 +1,24 @@
+---
+driver:
+  name: docker
+  use_sudo: false
+
+provisioner:
+  name: chef_zero
+
+verifier:
+  name: inspec
+
+platforms:
+- name: ubuntu-14.04
+
+suites:
+  - name: default
+    driver:
+      forward:
+      - 8080:80
+      - 8443:443
+    run_list:
+      - recipe[acme-web::default]
+    inspec_tests:
+      - test/integration/default
