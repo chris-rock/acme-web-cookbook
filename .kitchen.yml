@@ -20,5 +20,7 @@ suites:
       - 8443:443
     run_list:
       - recipe[acme-web::default]
-    inspec_tests:
-      - test/integration/default
+    verifier:
+      inspec_tests:
+        - path: test/integration/default
+        # - url: https://github.com/chris-rock/acme-inspec-profile
